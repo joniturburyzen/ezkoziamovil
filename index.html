@@ -1,540 +1,1183 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>🥃 Escocia: Guía Interactiva</title>
-<!-- Google Maps JavaScript API -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCE0XidfuLtjrNgNenKnpqq6lq1F0CTYUs&libraries=places"></script>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif;background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400"><rect width="400" height="400" fill="%233e2723"/><path d="M0 0 L400 400 M0 100 L300 400 M0 200 L200 400 M0 300 L100 400 M100 0 L400 300 M200 0 L400 200 M300 0 L400 100" stroke="%235d4037" stroke-width="2" opacity="0.3"/></svg>');background-size:cover;background-attachment:fixed;color:#fff;line-height:1.5;position:relative}body::before{content:"";position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(45deg,rgba(180,30,30,0.08)25%,transparent 25%,transparent 75%,rgba(180,30,30,0.08)75%),linear-gradient(135deg,rgba(180,30,30,0.08)25%,transparent 25%,transparent 75%,rgba(180,30,30,0.08)75%);background-size:40px 40px;pointer-events:none;z-index:-1}header{background:linear-gradient(135deg,rgba(62,39,35,0.95),rgba(30,15,15,0.95));padding:1rem;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,0.7);border-bottom:3px solid #c62828;position:relative;z-index:100}h1{font-size:1.8rem;margin-bottom:0.3rem;color:#d4af37;text-shadow:2px 2px 4px rgba(0,0,0,0.8);letter-spacing:1px;font-weight:bold}.subtitle{font-size:0.95rem;color:#ecf0f1;opacity:0.9;margin-top:0.3rem}.container{max-width:100%;margin:0 auto;padding:0.8rem;gap:1rem}.search-container{position:relative;margin-bottom:0.8rem}.search-box{width:100%;padding:12px 16px;background:rgba(30,15,15,0.9);border:2px solid #d4af37;border-radius:12px;color:white;font-size:1rem;outline:none;transition:all 0.3s}.search-box:focus{border-color:#c62828;box-shadow:0 0 15px rgba(212,175,55,0.5)}.search-box::placeholder{color:#b0bec5}#map-container{position:relative;background:rgba(30,15,15,0.7);border-radius:10px;overflow:hidden;box-shadow:0 5px 25px rgba(0,0,0,0.8);border:3px solid #8b0000}#map{height:60vh;min-height:300px;width:100%;border-radius:8px}.action-buttons-popup{background:linear-gradient(135deg,rgba(44,62,80,0.95),rgba(30,40,50,0.95));border-radius:16px;padding:1rem;box-shadow:0 10px 30px rgba(0,0,0,0.7);border:3px solid #5d4037;display:flex;flex-direction:column;gap:0.9rem;min-width:220px;position:absolute;z-index:1000;animation:popupSlide 0.3s ease-out;touch-action:manipulation}@keyframes popupSlide{from{opacity:0;transform:translateY(-15px)}to{opacity:1;transform:translateY(0)}}.btn-action{padding:1.3rem 1.5rem;border:none;border-radius:14px;font-size:1.3rem;font-weight:bold;cursor:pointer;transition:all 0.2s ease;color:white;text-shadow:1px 1px 2px rgba(0,0,0,0.8);display:flex;align-items:center;justify-content:center;gap:0.7rem;min-height:56px;touch-action:manipulation}.btn-jamar{background:linear-gradient(135deg,#c62828,#8b0000);border:3px solid #d32f2f}.btn-culturilla{background:linear-gradient(135deg,#1565c0,#0d47a1);border:3px solid #1976d2}.btn-paseito{background:linear-gradient(135deg,#2e7d32,#1b5e20);border:3px solid #388e3c}.btn-action:hover{transform:scale(1.03);box-shadow:0 6px 20px rgba(0,0,0,0.6)}.btn-action:active{transform:scale(0.97)}.info-panel{background:linear-gradient(135deg,rgba(44,62,80,0.95),rgba(30,40,50,0.95));border-radius:16px;padding:1.5rem;box-shadow:0 8px 25px rgba(0,0,0,0.6);border:3px solid #5d4037;margin-top:0.5rem}.panel-title{font-size:1.6rem;color:#d4af37;margin-bottom:1.2rem;text-align:center;border-bottom:3px solid #d4af37;padding-bottom:0.7rem;font-weight:bold}.info-content{display:none}.info-content.active{display:block;animation:fadeIn 0.4s ease}@keyframes fadeIn{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}.items-list{display:flex;flex-direction:column;gap:1.3rem;margin-top:1.2rem}.item{background:rgba(62,39,35,0.8);padding:1.4rem;border-radius:14px;border-left:6px solid #d4af37;transition:all 0.25s ease;box-shadow:0 4px 12px rgba(0,0,0,0.45);touch-action:manipulation}.item:hover{transform:translateX(6px);background:rgba(78,52,46,0.85);box-shadow:0 6px 18px rgba(0,0,0,0.55)}.item-title{font-size:1.35rem;font-weight:bold;color:#fff;margin-bottom:0.9rem;display:flex;align-items:center;gap:0.6rem}.item-image{width:100%;height:180px;object-fit:cover;border-radius:12px;margin-bottom:1rem;box-shadow:0 4px 10px rgba(0,0,0,0.5);display:block}.item-desc{font-size:0.98rem;color:#f8f9fa;opacity:0.95;margin-bottom:1rem;line-height:1.55}.item-details{display:flex;flex-direction:column;gap:0.7rem;margin-top:0.9rem}.item-detail{display:flex;align-items:flex-start;gap:0.7rem;font-size:0.95rem}.item-link{display:inline-block;margin-top:0.9rem;color:#4da6ff;text-decoration:none;font-weight:bold;transition:all 0.25s;padding:0.6rem 1rem;border-radius:10px;background:rgba(77,166,255,0.12);width:fit-content;font-size:1.05rem;touch-action:manipulation}.item-link:hover{background:rgba(77,166,255,0.25);transform:translateX(4px);color:#64b5f6}.item-extra{font-size:0.88rem;color:#cfd8dc;margin-top:0.7rem;font-style:italic;padding-top:0.7rem;border-top:1px solid rgba(255,255,255,0.12)}.contact-info{background:rgba(0,0,0,0.35);padding:1rem;border-radius:10px;margin-top:0.9rem;font-size:0.95rem;border:1px solid rgba(255,255,255,0.1)}.contact-info div{margin-bottom:0.5rem;display:flex;align-items:flex-start;gap:0.7rem;flex-wrap:wrap}.contact-info a{color:#4da6ff;text-decoration:underline}.footer{text-align:center;padding:1.2rem;background:rgba(30,15,15,0.85);border-top:3px solid #8b0000;margin-top:1rem;font-size:0.85rem;color:#bdc3c7;line-height:1.5}.btn-favorite{background:transparent;border:none;font-size:1.8rem;padding:5px;cursor:pointer;flex-shrink:0;transition:transform 0.2s ease}.btn-favorite:hover{transform:scale(1.3)}.btn-favorite.favorited{color:#ffd700;text-shadow:0 0 8px rgba(255,215,0,0.7)}.note-input{width:100%;min-height:60px;background:rgba(30,15,15,0.7);color:white;border:1px solid #5d4037;border-radius:6px;padding:8px;margin-top:8px;font-size:0.95rem;resize:vertical}.note-input:focus{outline:2px solid #d4af37;background:rgba(40,20,20,0.8)}.btn-streetview,.btn-directions{background:linear-gradient(135deg,#5d4037,#3e2723);border:2px solid #d4af37;color:white;padding:8px 12px;border-radius:8px;font-size:0.9rem;margin-top:8px;cursor:pointer;transition:all 0.2s;display:inline-block;width:48%}.btn-streetview:hover,.btn-directions:hover{background:linear-gradient(135deg,#6d4c41,#4e342e);transform:translateY(-2px)}.btn-streetview{margin-right:4%}.header-buttons{display:flex;justify-content:center;gap:10px;margin-top:8px}.btn-mylist{background:#d4af37;color:#3e2723;padding:6px 14px;border:none;border-radius:8px;cursor:pointer;font-weight:bold;font-size:0.9rem;transition:all 0.2s}.btn-mylist:hover{background:#c6a028;transform:scale(1.05)}@media(max-width:480px){h1{font-size:1.6rem}.subtitle{font-size:0.85rem}#map{height:55vh;min-height:280px}.btn-action{padding:1.4rem 1.2rem;font-size:1.25rem;min-height:60px}.action-buttons-popup{min-width:240px;border-radius:18px;padding:0.8rem}.item-image{height:160px}.item{padding:1.3rem;border-radius:16px}.panel-title{font-size:1.5rem}.contact-info{padding:0.9rem;font-size:0.9rem}.footer{padding:1rem;font-size:0.8rem}.btn-streetview,.btn-directions{width:100%;margin-right:0;margin-top:6px}}@media(min-width:769px){.items-list{grid-template-columns:repeat(auto-fill,minmax(350px,1fr));grid-auto-rows:auto}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>🥃 Scotland Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #1a2b3d;
+            color: #fff;
+            height: 100vh;
+            overflow: hidden;
+            touch-action: manipulation;
+        }
+
+        header {
+            background: #0f1a25;
+            padding: 15px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #e87424;
+            text-align: center;
+        }
+
+        .categories {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .categories button {
+            background: #e87424;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            font-size: 0.9rem;
+            flex: 1;
+            min-width: 100px;
+        }
+
+        .categories button:hover {
+            background: #ff914d;
+        }
+
+        .categories button.active {
+            background: #ff914d;
+            box-shadow: 0 4px 10px rgba(232, 116, 36, 0.5);
+        }
+
+        #map {
+            height: calc(100vh - 100px);
+            width: 100%;
+            position: absolute;
+            top: 100px;
+            left: 0;
+        }
+
+        #panel-info {
+            position: fixed;
+            right: 20px;
+            top: 120px;
+            background: white;
+            color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.4);
+            max-width: 350px;
+            z-index: 1000;
+            transition: transform 0.3s;
+        }
+
+        #panel-info.hidden {
+            transform: translateX(400px);
+        }
+
+        #panel-info img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            display: none;
+        }
+
+        #panel-info h2 {
+            margin-bottom: 5px;
+            color: #0f1a25;
+            font-size: 1.2rem;
+        }
+
+        #panel-rating {
+            color: #e87424;
+            margin-bottom: 10px;
+        }
+
+        #panel-address, #panel-phone {
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+
+        #panel-website {
+            display: none;
+            margin: 10px 0;
+            color: #e87424;
+            text-decoration: none;
+        }
+
+        #panel-website:hover {
+            text-decoration: underline;
+        }
+
+        #panel-hours {
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        #route-btn {
+            background: #2196F3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+        }
+
+        #route-btn:hover {
+            background: #1976D2;
+        }
+
+        #close-panel {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+        }
+
+        #close-panel:hover {
+            color: #000;
+        }
+
+        #route-panel {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            color: #333;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.4);
+            z-index: 1000;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        #route-panel.hidden {
+            display: none;
+        }
+
+        #route-summary {
+            margin: 10px 0;
+            font-weight: bold;
+            color: #0f1a25;
+        }
+
+        #open-gmaps {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+
+        #open-gmaps:hover {
+            background: #45a049;
+        }
+
+        #close-route {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: #666;
+        }
+
+        #close-route:hover {
+            color: #000;
+        }
+
+        #marker-form {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            color: #333;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.5);
+            z-index: 2000;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        #marker-form.hidden {
+            display: none;
+        }
+
+        #marker-form h3 {
+            margin-bottom: 15px;
+            color: #0f1a25;
+            text-align: center;
+        }
+
+        #marker-form label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        #marker-form label input,
+        #marker-form label textarea,
+        #marker-form label select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+
+        #marker-form button {
+            background: #e87424;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            font-weight: bold;
+            font-family: inherit;
+        }
+
+        #marker-form button:hover {
+            background: #ff914d;
+        }
+
+        #close-form {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+        }
+
+        #close-form:hover {
+            color: #000;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 10px;
+            }
+
+            header h1 {
+                font-size: 1.2rem;
+            }
+
+            .categories {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .categories button {
+                width: 100%;
+                padding: 8px;
+                font-size: 0.85rem;
+            }
+
+            #panel-info {
+                right: 10px;
+                top: 100px;
+                max-width: 90%;
+            }
+
+            #route-panel {
+                left: 10px;
+                right: 10px;
+                transform: none;
+                width: calc(100% - 20px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1rem;
+            }
+
+            .categories button {
+                padding: 6px;
+                font-size: 0.8rem;
+            }
+
+            #panel-info {
+                top: 90px;
+                padding: 15px;
+            }
+
+            #panel-info h2 {
+                font-size: 1rem;
+            }
+
+            #panel-info img {
+                height: 150px;
+            }
+        }
+    </style>
 </head>
 <body>
-<header>
-<h1>🏴󠁧󠁢󠁳󠁣󠁴󠁿 ESCOCIA INTERACTIVA 🏴󠁧󠁢󠁳󠁣󠁴󠁿</h1>
-<div class="subtitle">Explora las 17 mejores localidades, 10 destilerías y experiencias</div>
-<div class="header-buttons">
-<button class="btn-mylist" onclick="showMyList()">📋 Mi Lista</button>
-</div>
-</header>
-
-<div class="container">
-<div class="search-container">
-<input type="text" id="search-box" class="search-box" placeholder="🔍 Busca una localidad...">
-</div>
-<div id="map-container"><div id="map"></div></div>
-<div class="info-panel" id="info-panel">
-<h2 class="panel-title" id="panel-title">Selecciona una localidad en el mapa</h2>
-<div id="info-content" class="info-content active">
-<p style="text-align:center;font-size:1.15rem;color:#e0e0e0;padding:1.8rem;line-height:1.6">
-📍 <strong>Pincha en cualquier localidad</strong> para ver opciones<br>
-🥃 <strong>Pincha en una botella</strong> para info de la destilería<br>
-<small style="display:block;margin-top:1rem;font-size:0.95rem;color:#b0bec5">💡 Consejo: Usa dos dedos para mover el mapa en móviles</small>
-</p>
-</div>
-</div>
-</div>
-
-<div class="footer">
-<p>Guía interactiva de Escocia • Whisky, Naturaleza, Cultura y Gastronomía<br>
-<small>Diseñado para móviles • Desliza para explorar • Toca los botones para más info</small></p>
-</div>
-
-<script>
-// ========== DATOS COMPLETOS ==========
-const localidadesData = {
-"Edimburgo": {
-jamar: [
-{name:"The Witchery by the Castle",desc:"Restaurante gótico de lujo con decoración opulenta y cocina escocesa premium.",image:"https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600",address:"352 Castlehill, Royal Mile, EH1 2NF",phone:"+44 131 225 5432",web:"https://www.thewitchery.com",extra:"⭐ Michelin • Cena romántica"},
-{name:"Whiski Rooms",desc:"Pub con más de 350 whiskies escoceses y cocina tradicional. Ambiente acogedor con chimenea.",image:"https://images.unsplash.com/photo-1551334787-29b7266b0b30?w=600",address:"119 High St, Royal Mile, EH1 1SG",phone:"+44 131 226 1599",web:"https://www.thewhiskirooms.com",extra:"🥃 Whisky bar • Menú escocés"},
-{name:"Ondine",desc:"Mariscos frescos directos del mar del Norte. Ostras, langosta y pescado del día.",image:"https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600",address:"25 George IV Bridge, EH1 3EZ",phone:"+44 131 226 5111",web:"https://www.ondine.co.uk",extra:"🦞 Marisquería • Ostras frescas"},
-{name:"The Scran & Scallie",desc:"Gastropub moderno de chefs galardonados. Comida escocesa con toque contemporáneo.",image:"https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=600",address:"1 Comely Bank Rd, EH4 1DT",phone:"+44 131 332 7667",web:"https://www.thescranandscallie.co.uk",extra:"🍺 Pub gourmet • Chef Michelin"},
-{name:"Dishoom Edinburgh",desc:"Cocina india inspirada en los Irani cafés de Bombay. Desayunos legendarios.",image:"https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600",address:"4a St Andrew Square, EH2 2BD",phone:"+44 131 260 6888",web:"https://www.dishoom.com/edinburgh",extra:"🌶️ Comida india • Ambiente retro"}
-],
-culturilla: [
-{name:"Castillo de Edimburgo",desc:"Fortaleza histórica con 900 años de historia, residencia de María Estuardo y vistas panorámicas.",image:"https://images.unsplash.com/photo-1534447677768-be436bb09401?w=800",link:"https://www.edinburghcastle.gov.uk",extra:"⏰ 9:30-18:00 • Entrada: £19.50"},
-{name:"Royal Mile",desc:"Calle principal medieval que conecta el Castillo con el Palacio de Holyroodhouse.",image:"https://images.unsplash.com/photo-1534447677768-be436bb09401?w=800",link:"https://www.visitscotland.com/info/towns-villages/royal-mile-p937311",extra:"🚶 Calle peatonal • 1.8km"},
-{name:"Palacio de Holyroodhouse",desc:"Residencia oficial de la realeza británica en Escocia. Conocido por los apartamentos de María Estuardo.",image:"https://images.unsplash.com/photo-1564581184201-9c4c5e8c8c7a?w=800",link:"https://www.royal.uk/royal-residences-palace-holyroodhouse",extra:"👑 Residencia real • Jardines históricos"}
-],
-paseito: [
-{name:"Arthur's Seat",desc:"Volcán extinto en Holyrood Park. Sendero de 2 horas con vistas espectaculares de toda Edimburgo.",image:"https://images.unsplash.com/photo-1534447677768-be436bb09401?w=800",link:"https://www.visitscotland.com/info/see-do/arthur-seat-p889711",extra:"🥾 Moderada • 2-3h"}
-]
-}
-// ... (continúa con el resto de localidadesData del archivo anterior)
-};
-
-const destileriasData = [
-{name:"Glenfiddich",coords:[57.352,-3.097],desc:"📍 Dufftown, Speyside • 🏭 1887 • 🥃 Speyside single malt • El nombre significa 'Valle de los Ciervos'. Whiskies suaves con notas de pera. • 🌐 glenfiddich.com"},
-{name:"Macallan",coords:[57.328,-3.1],desc:"📍 Craigellachie, Speyside • 🏭 1824 • 🥃 Speyside sherry oak • Barricas de roble español. Destilería con arquitectura espectacular. • 🌐 themacallan.com"},
-{name:"Laphroaig",coords:[55.675,-6.303],desc:"📍 Islay • 🏭 1815 • 🥃 Islay heavily peated • Whisky más ahumado y medicinal. Favorito del Príncipe Carlos. • 🌐 laphroaig.com"},
-{name:"Ardbeg",coords:[55.68,-6.3],desc:"📍 Islay • 🏭 1815 • 🥃 Islay peated • Casi cerró en los 80, rescatada en 1997. Notas de limón y sal marina. • 🌐 ardbeg.com"},
-{name:"Talisker",coords:[57.286,-6.4],desc:"📍 Isla de Skye • 🏭 1830 • 🥃 Island maritime • Única destilería de Skye. Notas marinas, ahumado y pimienta negra. • 🌐 malts.com/talisker"},
-{name:"Oban",coords:[56.414,-5.471],desc:"📍 Oban • 🏭 1794 • 🥃 West Highland • Pequeña destilería en medio de la ciudad. Carácter marino y afrutado. • 🌐 malts.com/oban"},
-{name:"Highland Park",coords:[58.983,-2.96],desc:"📍 Kirkwall, Orkney • 🏭 1798 • 🥃 Orkney lightly peated • Combina turba local con roble español. Notas de miel y brezo. • 🌐 highlandparkwhisky.com"},
-{name:"Glenlivet",coords:[57.31,-3.24],desc:"📍 Ballindalloch, Speyside • 🏭 1824 • 🥃 Speyside • Pionera legal en Speyside. Whiskies suaves, afrutados y accesibles. • 🌐 theglenlivet.com"},
-{name:"Dalwhinnie",coords:[56.97,-4.08],desc:"📍 Dalwhinnie, Highlands • 🏭 1897 • 🥃 Highland • Destilería más alta de Escocia (352m). Notas de miel y brezo. • 🌐 malts.com/dalwhinnie"},
-{name:"Lagavulin",coords:[55.677,-6.31],desc:"📍 Islay • 🏭 1816 • 🥃 Islay heavily peated • 'El Malt de los Malts'. Intensamente ahumado y complejo. • 🌐 malts.com/lagavulin"}
-];
-
-const localidadesCoords = {
-"Edimburgo":[55.9533,-3.1883],"Glasgow":[55.8642,-4.2518],"St Andrews":[56.3397,-2.7977],"Inverness":[57.4778,-4.2247],
-"Portree (Skye)":[57.4127,-6.1914],"Oban":[56.4153,-5.4702],"Fort William":[56.8487,-5.1053],
-"Glencoe":[56.6826,-5.103],"Pitlochry":[56.7009,-3.7333],"Stirling":[56.1165,-3.9369],
-"Aviemore":[57.197,-3.83],"Tobermory (Mull)":[56.6233,-6.0689],"Dundee":[56.462,-2.9707],
-"Perth":[56.395,-3.433],"Aberdeen":[57.1497,-2.0943],"Fort Augustus":[57.1533,-4.6783],
-"Ullapool":[57.8972,-5.1533]
-};
-
-// ========== GOOGLE MAPS INICIALIZACIÓN ==========
-let map;
-let actionButtonsDiv = null;
-let autocomplete;
-
-function initMap() {
-map = new google.maps.Map(document.getElementById('map'), {
-center: { lat: 56.8, lng: -4.2 },
-zoom: 7.5,
-mapTypeControl: true,
-zoomControl: true,
-streetViewControl: true,
-fullscreenControl: true,
-styles: [
-{featureType:"water",stylers:[{color:"#19a0d8"}]},
-{featureType:"landscape",stylers:[{color:"#2c3e50"}]},
-{featureType:"road.highway",elementType:"geometry",stylers:[{color:"#2c3e50"}]},
-{featureType:"road.arterial",elementType:"geometry",stylers:[{color:"#2c3e50"}]},
-{featureType:"road.local",elementType:"geometry",stylers:[{color:"#34495e"}]},
-{featureType:"poi",elementType:"geometry",stylers:[{color:"#2c3e50"}]},
-{featureType:"transit",stylers:[{color:"#34495e"}]},
-{elementType:"labels.text.fill",stylers:[{color:"#ecf0f1"}]},
-{elementType:"labels.text.stroke",stylers:[{color:"#2c3e50"}]}
-]
-});
-
-// Añadir marcadores de localidades
-Object.entries(localidadesCoords).forEach(([name, coords]) => {
-const marker = new google.maps.Marker({
-position: { lat: coords[0], lng: coords[1] },
-map: map,
-label: {
-text: name,
-color: '#3e2723',
-fontWeight: 'bold',
-fontSize: '12px'
-},
-icon: {
-path: google.maps.SymbolPath.CIRCLE,
-scale: 12,
-fillColor: '#d4af37',
-fillOpacity: 1,
-strokeColor: '#3e2723',
-strokeWeight: 2,
-strokeOpacity: 1
-},
-title: name
-});
-
-marker.addListener('click', function(e) {
-showActionButtons(name, coords[0], coords[1], e.latLng);
-});
-});
-
-// Añadir marcadores de destilerías
-destileriasData.forEach(dest => {
-const marker = new google.maps.Marker({
-position: { lat: dest.coords[0], lng: dest.coords[1] },
-map: map,
-icon: {
-path: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z',
-scale: 0.8,
-fillColor: '#c62828',
-fillOpacity: 1,
-strokeColor: '#8b0000',
-strokeWeight: 2,
-strokeOpacity: 1,
-anchor: new google.maps.Point(12, 20)
-},
-title: dest.name
-});
-
-const infowindow = new google.maps.InfoWindow({
-content: `<strong>${dest.name}</strong><br><span style="font-size:13px;line-height:1.5">${dest.desc}</span>`,
-maxWidth: 300
-});
-
-marker.addListener('click', function() {
-infowindow.open(map, marker);
-});
-});
-
-// Autocomplete de búsqueda
-const input = document.getElementById('search-box');
-autocomplete = new google.maps.places.Autocomplete(input);
-autocomplete.bindTo('bounds', map);
-
-autocomplete.addListener('place_changed', function() {
-const place = autocomplete.getPlace();
-if (place.geometry) {
-map.panTo(place.geometry.location);
-map.setZoom(12);
-}
-});
-}
-
-// ========== FUNCIONES DE FAVORITOS Y NOTAS (localStorage) ==========
-function toggleFavorite(localidad, category, placeName) {
-const key = `favorites_${localidad}_${category}_${placeName}`;
-const isFav = localStorage.getItem(key);
-
-if (isFav) {
-localStorage.removeItem(key);
-} else {
-localStorage.setItem(key, JSON.stringify({
-localidad,
-category,
-placeName,
-timestamp: Date.now()
-}));
-}
-
-// Actualizar icono en el panel actual si está abierto
-showInfo(localidad, category);
-}
-
-function isFavorite(localidad, category, placeName) {
-return localStorage.getItem(`favorites_${localidad}_${category}_${placeName}`);
-}
-
-function saveNote(localidad, category, placeName, text) {
-const key = `note_${localidad}_${category}_${placeName}`;
-if (text.trim() === '') {
-localStorage.removeItem(key);
-} else {
-localStorage.setItem(key, text);
-}
-}
-
-function getNote(localidad, category, placeName) {
-return localStorage.getItem(`note_${localidad}_${category}_${placeName}`) || '';
-}
-
-function showMyList() {
-const panelTitle = document.getElementById('panel-title');
-const infoContent = document.getElementById('info-content');
-
-panelTitle.innerHTML = '📋 <span style="color:#d4af37">MI LISTA DE FAVORITOS</span>';
-
-// Obtener todos los favoritos del localStorage
-const favorites = [];
-for (let i = 0; i < localStorage.length; i++) {
-const key = localStorage.key(i);
-if (key.startsWith('favorites_')) {
-const data = JSON.parse(localStorage.getItem(key));
-favorites.push(data);
-}
-}
-
-// Ordenar por timestamp (más recientes primero)
-favorites.sort((a, b) => b.timestamp - a.timestamp);
-
-let html = '<div class="items-list">';
-
-if (favorites.length === 0) {
-html += '<div style="text-align:center;padding:40px;color:#b0bec5;font-size:1.1rem">No tienes favoritos aún. ⭐<br><small style="display:block;margin-top:10px;font-size:0.9rem">Pincha en ☆ para añadir lugares</small></div>';
-} else {
-favorites.forEach(fav => {
-const note = getNote(fav.localidad, fav.category, fav.placeName);
-
-html += `<div class="item" style="border-left:6px solid #d4af37">
-<div style="display:flex;justify-content:space-between;align-items:start;gap:10px">
-<div class="item-title">⭐ ${fav.placeName}</div>
-<small style="color:#b0bec5;white-space:nowrap">${fav.localidad}</small>
-</div>
-
-<div style="margin-top:10px;font-size:0.95rem;color:#f8f9fa">
-<strong>Categoría:</strong> ${fav.category === 'jamar' ? '🍽️ JAMAR' : fav.category === 'culturilla' ? '🏛️ CULTURILLA' : '🥾 PASEITO'}
-</div>`;
-
-if (note) {
-html += `<div style="margin-top:15px;padding:12px;background:rgba(0,0,0,0.2);border-radius:8px;border-left:4px solid #d4af37">
-<strong style="color:#d4af37;font-size:0.95rem">📝 Mis notas:</strong>
-<div style="margin-top:8px;color:#e0e0e0;font-size:0.95rem">${note.replace(/\n/g, '<br>')}</div>
-</div>`;
-}
-
-html += `<button onclick='removeFromList("${fav.localidad}","${fav.category}","${fav.placeName.replace(/"/g, '&quot;')}", this)' 
-style="margin-top:15px;background:#c62828;color:white;border:none;padding:8px 16px;border-radius:6px;cursor:pointer;width:100%;font-size:0.95rem">
-❌ Eliminar de favoritos
-</button>
-</div>`;
-}
-}
-}
-
-html += '</div>';
-infoContent.innerHTML = html;
-infoContent.classList.add('active');
-
-setTimeout(() => {
-document.getElementById('info-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
-}, 100);
-}
-
-function removeFromList(localidad, category, placeName, button) {
-if (!confirm('¿Eliminar de favoritos?')) return;
-
-// Eliminar favorito y nota
-localStorage.removeItem(`favorites_${localidad}_${category}_${placeName}`);
-localStorage.removeItem(`note_${localidad}_${category}_${placeName}`);
-
-// Eliminar visualmente
-const itemDiv = button.closest('.item');
-if (itemDiv) {
-itemDiv.style.opacity = '0';
-itemDiv.style.transform = 'translateX(20px)';
-setTimeout(() => {
-itemDiv.remove();
-
-// Si no quedan favoritos, mostrar mensaje
-let remaining = 0;
-for (let i = 0; i < localStorage.length; i++) {
-if (localStorage.key(i).startsWith('favorites_')) remaining++;
-}
-
-if (remaining === 0) {
-showMyList(); // Recargar panel
-}
-}, 300);
-}
-}
-
-// ========== FUNCIONES DE MAPA Y ACCIONES ==========
-function showActionButtons(localidadName, lat, lng, latLng) {
-// Eliminar botones anteriores si existen
-if (actionButtonsDiv) {
-document.body.removeChild(actionButtonsDiv);
-actionButtonsDiv = null;
-}
-
-// Crear contenedor de botones
-actionButtonsDiv = document.createElement('div');
-actionButtonsDiv.className = 'action-buttons-popup';
-
-// Posición relativa al mapa
-const mapContainer = document.getElementById('map-container');
-const mapRect = mapContainer.getBoundingClientRect();
-const point = map.getProjection().fromLatLngToPoint(latLng);
-const scale = Math.pow(2, map.getZoom());
-const pixelX = Math.floor(point.x * scale - map.getBounds().getNorthEast().lng() * scale);
-const pixelY = Math.floor(point.y * scale - map.getBounds().getSouthWest().lat() * scale);
-
-// Calcular posición en pantalla
-const containerWidth = mapContainer.offsetWidth;
-const containerHeight = mapContainer.offsetHeight;
-const leftPos = Math.min(Math.max(pixelX - 100, 10), containerWidth - 230);
-const topPos = Math.min(Math.max(pixelY - 180, 10), containerHeight - 250);
-
-actionButtonsDiv.style.left = leftPos + 'px';
-actionButtonsDiv.style.top = topPos + 'px';
-actionButtonsDiv.style.position = 'absolute';
-actionButtonsDiv.style.zIndex = '1000';
-
-actionButtonsDiv.innerHTML = `
-<button class="btn-action btn-jamar" onclick="showInfo('${localidadName}','jamar')">
-🍽️ JAMAR
-</button>
-<button class="btn-action btn-culturilla" onclick="showInfo('${localidadName}','culturilla')">
-🏛️ CULTURILLA
-</button>
-<button class="btn-action btn-paseito" onclick="showInfo('${localidadName}','paseito')">
-🥾 PASEITO
-</button>
-<button class="btn-streetview" onclick="showStreetView(${lat}, ${lng})">
-👁️ Street View
-</button>
-<button class="btn-directions" onclick="showDirections(${lat}, ${lng})">
-🚗 Cómo llegar
-</button>
-`;
-
-mapContainer.appendChild(actionButtonsDiv);
-
-// Cerrar al hacer clic fuera
-document.addEventListener('click', closeActionButtonsOnClickOutside);
-}
-
-function closeActionButtonsOnClickOutside(e) {
-if (actionButtonsDiv && !actionButtonsDiv.contains(e.target) && !e.target.closest('.action-buttons-popup')) {
-document.body.removeChild(actionButtonsDiv);
-actionButtonsDiv = null;
-document.removeEventListener('click', closeActionButtonsOnClickOutside);
-}
-}
-
-function showStreetView(lat, lng) {
-const streetViewDiv = document.createElement('div');
-streetViewDiv.id = 'streetview-modal';
-streetViewDiv.style.cssText = `
-position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-background: rgba(0,0,0,0.9); z-index: 9999; display: flex; 
-flex-direction: column; align-items: center; justify-content: center;
-`;
-
-const closeBtn = document.createElement('button');
-closeBtn.innerHTML = '❌ Cerrar Street View';
-closeBtn.style.cssText = `
-background: #c62828; color: white; border: none; padding: 12px 24px; 
-border-radius: 8px; font-size: 1.1rem; cursor: pointer; margin-bottom: 20px;
-`;
-closeBtn.onclick = () => document.body.removeChild(streetViewDiv);
-
-const panorama = document.createElement('div');
-panorama.id = 'panorama';
-panorama.style.width = '90%';
-panorama.style.height = '80%';
-panorama.style.borderRadius = '10px';
-panorama.style.boxShadow = '0 10px 40px rgba(0,0,0,0.8)';
-
-streetViewDiv.appendChild(closeBtn);
-streetViewDiv.appendChild(panorama);
-document.body.appendChild(streetViewDiv);
-
-// Cargar Street View
-new google.maps.StreetViewPanorama(panorama, {
-position: { lat: lat, lng: lng },
-pov: { heading: 0, pitch: 0 },
-zoom: 1
-});
-}
-
-function showDirections(lat, lng) {
-if (!navigator.geolocation) {
-alert('Tu navegador no soporta geolocalización');
-return;
-}
-
-navigator.geolocation.getCurrentPosition(
-position => {
-const origin = { lat: position.coords.latitude, lng: position.coords.longitude };
-const destination = { lat: lat, lng: lng };
-
-const directionsService = new google.maps.DirectionsService();
-const directionsRenderer = new google.maps.DirectionsRenderer({
-map: map,
-draggable: true,
-panel: document.getElementById('info-content')
-});
-
-directionsService.route({
-origin: origin,
-destination: destination,
-travelMode: 'DRIVING'
-}, (result, status) => {
-if (status === 'OK') {
-directionsRenderer.setDirections(result);
-const panelTitle = document.getElementById('panel-title');
-panelTitle.innerHTML = '🚗 <span style="color:#d4af37">RUTA</span>';
-document.getElementById('info-content').classList.add('active');
-
-// Centrar mapa en la ruta
-const bounds = new google.maps.LatLngBounds();
-result.routes[0].legs[0].steps.forEach(step => {
-bounds.extend(step.start_location);
-bounds.extend(step.end_location);
-});
-map.fitBounds(bounds);
-} else {
-alert('No se pudo calcular la ruta: ' + status);
-}
-});
-},
-error => {
-alert('No se pudo obtener tu ubicación. Permite el acceso a la ubicación.');
-},
-{ enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
-);
-}
-
-// ========== FUNCIÓN PRINCIPAL showInfo (CORREGIDA) ==========
-window.showInfo = function(localidadName, category) {
-const panelTitle = document.getElementById('panel-title');
-const infoContent = document.getElementById('info-content');
-
-let categoryText = '', emoji = '';
-if (category === 'jamar') { categoryText = '🍽️ JAMAR'; emoji = '🍽️'; }
-if (category === 'culturilla') { categoryText = '🏛️ CULTURILLA'; emoji = '🏛️'; }
-if (category === 'paseito') { categoryText = '🥾 PASEITO'; emoji = '🥾'; }
-
-panelTitle.innerHTML = `${categoryText} en <span style="color:#c62828">${localidadName}</span>`;
-
-const items = localidadesData[localidadName][category];
-let html = '<div class="items-list">';
-
-items.forEach(item => {
-const isFav = isFavorite(localidadName, category, item.name);
-const note = getNote(localidadName, category, item.name);
-
-// Usar comillas dobles para onclick y escapar comillas dobles internas
-html += `<div class="item">
-<div style="display:flex;justify-content:space-between;align-items:start;gap:10px">
-<div class="item-title">${emoji} ${item.name}</div>
-<button class="btn-favorite ${isFav ? 'favorited' : ''}" 
-onclick='toggleFavorite("${localidadName}","${category}","${item.name.replace(/"/g, '&quot;')}");'>
-${isFav ? '⭐' : '☆'}
-</button>
-</div>
-
-<img src="${item.image}" alt="${item.name}" class="item-image" onerror="this.style.display='none';">
-<div class="item-desc">${item.desc}</div>`;
-
-// Área de notas
-html += `<div style="margin:15px 0;padding:12px;background:rgba(0,0,0,0.2);border-radius:8px;border-left:4px solid #d4af37;">
-<strong style="color:#d4af37;font-size:0.95rem;">📝 Mis notas:</strong>
-<textarea class="note-input" 
-placeholder="Añade tus notas aquí..." 
-onblur='saveNote("${localidadName}","${category}","${item.name.replace(/"/g, '&quot;')}",this.value);'
-style="width:100%;min-height:60px;background:rgba(30,15,15,0.7);color:white;border:1px solid #5d4037;border-radius:6px;padding:8px;margin-top:8px;font-size:0.95rem;resize:vertical;">${note}</textarea>
-</div>`;
-
-// Contacto o link según categoría
-if (category === 'jamar') {
-html += `<div class="contact-info">
-<div>📍 ${item.address}</div>
-<div>📞 ${item.phone}</div>
-<div>🌐 <a href="${item.web}" target="_blank" class="item-link">${item.web.replace('https://','')}</a></div>
-</div>
-<div class="item-extra">${item.extra}</div>`;
-}
-
-if (category === 'culturilla' || category === 'paseito') {
-html += `<div class="item-details">
-<div class="item-detail"><strong>ℹ️</strong><span>${item.extra}</span></div>
-</div>
-<a href="${item.link}" target="_blank" class="item-link">📖 Más información</a>`;
-}
-
-html += '</div>';
-});
-
-html += '</div>';
-infoContent.innerHTML = html;
-infoContent.classList.add('active');
-
-// Cerrar botones de acción si están abiertos
-if (actionButtonsDiv) {
-document.body.removeChild(actionButtonsDiv);
-actionButtonsDiv = null;
-document.removeEventListener('click', closeActionButtonsOnClickOutside);
-}
-
-setTimeout(() => {
-document.getElementById('info-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
-}, 100);
-};
-
-// Inicializar mapa cuando la página cargue
-window.addEventListener('load', initMap);
-</script>
+    <header>
+        <h1>🥃 SCOTLAND GUIDE</h1>
+        <div class="categories">
+            <button data-cat="food" class="active">🍽️ JAMAR</button>
+            <button data-cat="culture">🏛️ CULTURILLA</button>
+            <button data-cat="nature">🌲 PASEITO</button>
+        </div>
+    </header>
+
+    <div id="map"></div>
+
+    <div id="panel-info" class="hidden">
+        <button id="close-panel">×</button>
+        <img id="panel-photo" src="" alt="">
+        <h2 id="panel-name"></h2>
+        <div id="panel-rating"></div>
+        <p id="panel-address"></p>
+        <p id="panel-phone"></p>
+        <a id="panel-website" target="_blank">🌐 Web oficial</a>
+        <p id="panel-hours"></p>
+        <button id="route-btn">🧭 CALCULAR RUTA</button>
+    </div>
+
+    <div id="route-panel" class="hidden">
+        <button id="close-route">×</button>
+        <h3>Ruta</h3>
+        <div id="route-summary"></div>
+        <a id="open-gmaps" target="_blank">📱 Abrir en Google Maps</a>
+    </div>
+
+    <div id="marker-form" class="hidden">
+        <button id="close-form">×</button>
+        <h3>📍 Añadir marcador personalizado</h3>
+        <form id="custom-marker-form">
+            <label>
+                Nombre:
+                <input type="text" id="marker-name" required>
+            </label>
+            <label>
+                Descripción:
+                <textarea id="marker-desc" rows="3"></textarea>
+            </label>
+            <label>
+                URL Foto (opcional):
+                <input type="url" id="marker-photo">
+            </label>
+            <label>
+                Teléfono (opcional):
+                <input type="tel" id="marker-phone">
+            </label>
+            <label>
+                Web (opcional):
+                <input type="url" id="marker-web">
+            </label>
+            <label>
+                Categoría:
+                <select id="marker-category">
+                    <option value="personal">Personal</option>
+                    <option value="favorito">Favorito</option>
+                    <option value="nota">Nota</option>
+                </select>
+            </label>
+            <button type="submit">Guardar</button>
+        </form>
+    </div>
+
+    <script>
+        // Datos de destilerías
+        const distilleries = [
+            {
+                name: "The Macallan",
+                location: { lat: 57.4638, lng: -3.1113 },
+                region: "Speyside",
+                description: "Destilería de lujo conocida por su whisky de malta single malt premium.",
+                founded: 1824,
+                website: "https://www.themacallan.com",
+                photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/The_Macallan_Distillery.jpg/800px-The_Macallan_Distillery.jpg"
+            },
+            {
+                name: "Glenfiddich",
+                location: { lat: 57.4494, lng: -3.1193 },
+                region: "Dufftown",
+                description: "La destilería más visitada del mundo, pionera del single malt escocés.",
+                founded: 1887,
+                website: "https://www.glenfiddich.com",
+                photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Glenfiddich_Distillery.jpg/800px-Glenfiddich_Distillery.jpg"
+            },
+            {
+                name: "The Glenlivet",
+                location: { lat: 57.3206, lng: -3.2322 },
+                region: "Ballindalloch",
+                description: "Uno de los single malts más famosos de Speyside, con sabor suave y afrutado.",
+                founded: 1824,
+                website: "https://www.theglenlivet.com",
+                photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Glenlivet_Distillery.jpg/800px-Glenlivet_Distillery.jpg"
+            },
+            {
+                name: "Lagavulin",
+                location: { lat: 55.6829, lng: -6.2258 },
+                region: "Islay",
+                description: "Whisky de Islay con sabor intenso a turba y humo, culto entre los aficionados.",
+                founded: 1816,
+                website: "https://www.lagavulin.com",
+                photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Lagavulin_Distillery.jpg/800px-Lagavulin_Distillery.jpg"
+            },
+            {
+                name: "Laphroaig",
+                location: { lat: 55.6839, lng: -6.2411 },
+                region: "Islay",
+                description: "Famoso por su sabor medicinal y ahumado intenso, whisky de carácter fuerte.",
+                founded: 1815,
+                website: "https://www.laphroaig.com",
+                photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Laphroaig_Distillery.jpg/800px-Laphroaig_Distillery.jpg"
+            },
+            {
+                name: "Ardbeg",
+                location: { lat: 55.6787, lng: -6.2667 },
+                region: "Islay",
+                description: "Whisky de turba potente con notas de café y chocolate, culto mundial.",
+                founded: 1815,
+                website: "https://www.ardbeg.com",
+                photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Ardbeg_Distillery.jpg/800px-Ardbeg_Distillery.jpg"
+            },
+            {
+                name: "Talisker",
+                location: { lat: 57.2894, lng: -6.3336 },
+                region: "Isle of Skye",
+                description: "Única destilería de Skye, whisky marino con toques de pimienta y humo.",
+                founded: 1830,
+                website: "https://www.taliskerwhisky.com",
+                photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Talisker_Distillery.jpg/800px-Talisker_Distillery.jpg"
+            },
+            {
+                name: "Highland Park",
+                location: { lat: 58.9808, lng: -2.9639 },
+                region: "Orkney",
+                description: "La destilería más septentrional de Escocia, whisky equilibrado con turba suave.",
+                founded: 1798,
+                website: "https://www.highlandparkwhisky.com",
+                photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Highland_Park_Distillery.jpg/800px-Highland_Park_Distillery.jpg"
+            },
+            {
+                name: "Oban",
+                location: { lat: 56.4147, lng: -5.4722 },
+                region: "Oban",
+                description: "Destilería urbana con whisky afrutado y ligeramente ahumado.",
+                founded: 1794,
+                website: "https://www.obanwhisky.com",
+                photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Oban_Distillery.jpg/800px-Oban_Distillery.jpg"
+            },
+            {
+                name: "Dalwhinnie",
+                location: { lat: 57.0633, lng: -4.0456 },
+                region: "Dalwhinnie",
+                description: "Destilería más alta de Escocia, whisky suave con notas de miel y brezo.",
+                founded: 1898,
+                website: "https://www.dalwhinnie.com",
+                photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Dalwhinnie_Distillery.jpg/800px-Dalwhinnie_Distillery.jpg"
+            },
+            {
+                name: "Glenmorangie",
+                location: { lat: 57.8061, lng: -4.0503 },
+                region: "Tain",
+                description: "Conocida por sus stills más altos de Escocia, whisky elegante y complejo.",
+                founded: 1843,
+                website: "https://www.glenmorangie.com",
+                photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Glenmorangie_Distillery.jpg/800px-Glenmorangie_Distillery.jpg"
+            },
+            {
+                name: "Aberlour",
+                location: { lat: 57.3758, lng: -3.2214 },
+                region: "Aberlour",
+                description: "Whisky Speyside rico y dulce, madurado en barricas de Jerez y bourbon.",
+                founded: 1879,
+                website: "https://www.aberlour.com",
+                photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Aberlour_Distillery.jpg/800px-Aberlour_Distillery.jpg"
+            },
+            {
+                name: "Balvenie",
+                location: { lat: 57.4486, lng: -3.1206 },
+                region: "Dufftown",
+                description: "Una de las pocas destilerías que aún maltea su propia cebada, whisky artesanal.",
+                founded: 1892,
+                website: "https://www.balvenie.com",
+                photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Balvenie_Distillery.jpg/800px-Balvenie_Distillery.jpg"
+            },
+            {
+                name: "Bowmore",
+                location: { lat: 55.7575, lng: -6.2656 },
+                region: "Islay",
+                description: "Destilería más antigua de Islay, whisky equilibrado con turba y frutas.",
+                founded: 1779,
+                website: "https://www.bowmore.com",
+                photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Bowmore_Distillery.jpg/800px-Bowmore_Distillery.jpg"
+            },
+            {
+                name: "Springbank",
+                location: { lat: 55.4303, lng: -5.5964 },
+                region: "Campbeltown",
+                description: "Última destilería tradicional de Campbeltown, proceso 100% manual.",
+                founded: 1828,
+                website: "https://www.springbankwhisky.com",
+                photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Springbank_Distillery.jpg/800px-Springbank_Distillery.jpg"
+            }
+        ];
+
+        // Variables globales
+        let map;
+        let userPosition = null;
+        let currentMarkers = [];
+        let customMarkers = [];
+        let infoWindow = null;
+        let directionsRenderer = null;
+        let directionsService = null;
+        let selectedPlace = null;
+        let currentCategory = 'food';
+
+        // ⚠️ initMap debe estar en scope global ANTES de cargar Google Maps
+        window.initMap = function() {
+            // Pedir ubicación del usuario
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        userPosition = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude
+                        };
+                        loadMap();
+                    },
+                    (error) => {
+                        console.error('Error getting location:', error);
+                        // Ubicación por defecto (Edimburgo)
+                        userPosition = { lat: 55.9533, lng: -3.1883 };
+                        loadMap();
+                    },
+                    { enableHighAccuracy: true, timeout: 10000 }
+                );
+            } else {
+                alert('Geolocalización no soportada');
+                userPosition = { lat: 55.9533, lng: -3.1883 };
+                loadMap();
+            }
+        };
+
+        function loadMap() {
+            // Crear mapa centrado en usuario
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: userPosition,
+                zoom: 13,
+                mapTypeControl: false,
+                streetViewControl: false,
+                fullscreenControl: true,
+                styles: [
+                    {
+                        featureType: 'water',
+                        elementType: 'geometry',
+                        stylers: [{ color: '#193341' }]
+                    },
+                    {
+                        featureType: 'landscape',
+                        elementType: 'geometry',
+                        stylers: [{ color: '#2c5a3c' }]
+                    },
+                    {
+                        featureType: 'road',
+                        elementType: 'geometry',
+                        stylers: [{ color: '#3a3a3a' }]
+                    },
+                    {
+                        featureType: 'poi',
+                        elementType: 'geometry',
+                        stylers: [{ color: '#4a6a4a' }]
+                    }
+                ]
+            });
+
+            // InfoWindow para hover
+            infoWindow = new google.maps.InfoWindow({
+                maxWidth: 300
+            });
+
+            // Services
+            directionsService = new google.maps.DirectionsService();
+            directionsRenderer = new google.maps.DirectionsRenderer({
+                map: map,
+                suppressMarkers: true,
+                polylineOptions: {
+                    strokeColor: '#e87424',
+                    strokeWeight: 5,
+                    strokeOpacity: 0.8
+                }
+            });
+
+            // Evento clic derecho para desktop
+            map.addListener('rightclick', (event) => {
+                showMarkerForm(event.latLng);
+            });
+
+            // Cargar destilerías
+            loadDistilleries();
+
+            // Cargar marcadores personalizados guardados
+            loadCustomMarkers();
+
+            // Eventos botones categorías
+            document.querySelectorAll('.categories button').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.categories button').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentCategory = btn.dataset.cat;
+                    loadCategoryPlaces();
+                });
+            });
+
+            // Evento cerrar panel
+            document.getElementById('close-panel').addEventListener('click', () => {
+                document.getElementById('panel-info').classList.add('hidden');
+            });
+
+            // Evento cerrar ruta
+            document.getElementById('close-route').addEventListener('click', () => {
+                document.getElementById('route-panel').classList.add('hidden');
+                directionsRenderer.set('directions', null);
+            });
+
+            // Evento cerrar formulario
+            document.getElementById('close-form').addEventListener('click', () => {
+                document.getElementById('marker-form').classList.add('hidden');
+            });
+
+            // Evento submit formulario
+            document.getElementById('custom-marker-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                saveCustomMarker();
+            });
+
+            // Botón ruta
+            document.getElementById('route-btn').addEventListener('click', calculateRoute);
+
+            // Cargar categoría inicial
+            setTimeout(() => {
+                loadCategoryPlaces();
+            }, 500);
+        }
+
+        // Cargar destilerías estáticas
+        function loadDistilleries() {
+            // Icono botella whisky
+            const whiskyIcon = {
+                url: 'https://cdn-icons-png.flaticon.com/512/190/190945.png',
+                scaledSize: new google.maps.Size(32, 32),
+                anchor: new google.maps.Point(16, 32)
+            };
+
+            distilleries.forEach(dist => {
+                const marker = new google.maps.Marker({
+                    position: dist.location,
+                    map: map,
+                    icon: whiskyIcon,
+                    title: dist.name,
+                     {  // ✅ CORREGIDO:  en lugar de solo {
+                        ...dist,
+                        type: 'distillery'
+                    }
+                });
+
+                // Hover info
+                google.maps.event.addListener(marker, 'mouseover', () => {
+                    const content = `
+                        <div style="font-family: Arial; padding: 10px; min-width: 200px;">
+                            <h3 style="margin: 0 0 5px 0; color: #8B4513;">🥃 ${dist.name}</h3>
+                            <p style="margin: 0; font-size: 0.9rem; color: #666;">${dist.region}</p>
+                            <p style="margin: 5px 0 0 0; font-size: 0.85rem;">${dist.description}</p>
+                        </div>
+                    `;
+                    infoWindow.setContent(content);
+                    infoWindow.open(map, marker);
+                });
+
+                google.maps.event.addListener(marker, 'mouseout', () => {
+                    infoWindow.close();
+                });
+
+                // Clic → panel completo
+                google.maps.event.addListener(marker, 'click', () => {
+                    showPlacePanel(dist);
+                });
+
+                currentMarkers.push(marker);
+            });
+        }
+
+        // Cargar lugares por categoría (Places API)
+        function loadCategoryPlaces() {
+            // Limpiar marcadores anteriores (excepto destilerías y personalizados)
+            currentMarkers.forEach(m => {
+                if (m.data && m.data.type !== 'distillery' && m.data.type !== 'custom') {
+                    m.setMap(null);
+                }
+            });
+            currentMarkers = currentMarkers.filter(m => 
+                m.data && (m.data.type === 'distillery' || m.data.type === 'custom')
+            );
+
+            if (!userPosition) return;
+
+            const placesService = new google.maps.places.PlacesService(map);
+
+            let request;
+            switch (currentCategory) {
+                case 'food':
+                    request = {
+                        location: userPosition,
+                        radius: 5000,
+                        type: ['restaurant', 'bar', 'cafe']
+                    };
+                    break;
+                case 'culture':
+                    request = {
+                        location: userPosition,
+                        radius: 5000,
+                        type: ['museum', 'art_gallery', 'church']
+                    };
+                    break;
+                case 'nature':
+                    request = {
+                        location: userPosition,
+                        radius: 5000,
+                        keyword: 'hiking trail viewpoint nature park'
+                    };
+                    break;
+            }
+
+            placesService.nearbySearch(request, (results, status) => {
+                if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    results.forEach(place => {
+                        addPlaceMarker(place);
+                    });
+                } else {
+                    console.error('Places API error:', status);
+                }
+            });
+        }
+
+        // Añadir marcador de lugar
+        function addPlaceMarker(place) {
+            let icon;
+            switch (currentCategory) {
+                case 'food':
+                    icon = {
+                        url: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
+                        scaledSize: new google.maps.Size(30, 30)
+                    };
+                    break;
+                case 'culture':
+                    icon = {
+                        url: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+                        scaledSize: new google.maps.Size(30, 30)
+                    };
+                    break;
+                case 'nature':
+                    icon = {
+                        url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+                        scaledSize: new google.maps.Size(30, 30)
+                    };
+                    break;
+            }
+
+            const marker = new google.maps.Marker({
+                position: place.geometry.location,
+                map: map,
+                icon: icon,
+                title: place.name,
+                 {  // ✅ CORREGIDO
+                    ...place,
+                    type: 'place',
+                    category: currentCategory
+                }
+            });
+
+            // Hover info
+            google.maps.event.addListener(marker, 'mouseover', () => {
+                let content = `
+                    <div style="font-family: Arial; padding: 10px; min-width: 200px;">
+                        <h3 style="margin: 0 0 5px 0;">${place.name}</h3>
+                `;
+
+                if (place.rating) {
+                    const stars = '⭐'.repeat(Math.floor(place.rating)) + '☆'.repeat(5 - Math.floor(place.rating));
+                    content += `<div style="color: #e87424; margin-bottom: 5px;">${stars} (${place.rating})</div>`;
+                }
+
+                if (place.photos && place.photos[0]) {
+                    content += `<img src="${place.photos[0].getUrl({ maxWidth: 100, maxHeight: 100 })}" style="width: 100px; height: 100px; object-fit: cover; margin: 5px 0;">`;
+                }
+
+                if (place.vicinity) {
+                    content += `<p style="margin: 5px 0 0 0; font-size: 0.85rem;">${place.vicinity}</p>`;
+                }
+
+                content += `</div>`;
+
+                infoWindow.setContent(content);
+                infoWindow.open(map, marker);
+            });
+
+            google.maps.event.addListener(marker, 'mouseout', () => {
+                infoWindow.close();
+            });
+
+            // Clic → obtener detalles completos
+            google.maps.event.addListener(marker, 'click', () => {
+                const placesService = new google.maps.places.PlacesService(map);
+                placesService.getDetails({ placeId: place.place_id }, (details, status) => {
+                    if (status === google.maps.places.PlacesServiceStatus.OK) {
+                        showPlacePanel(details);
+                    }
+                });
+            });
+
+            currentMarkers.push(marker);
+        }
+
+        // Mostrar panel lateral con info completa
+        function showPlacePanel(place) {
+            const panel = document.getElementById('panel-info');
+            
+            // Nombre
+            document.getElementById('panel-name').textContent = place.name || '';
+            
+            // Rating
+            const ratingEl = document.getElementById('panel-rating');
+            if (place.rating) {
+                const stars = '⭐'.repeat(Math.floor(place.rating)) + '☆'.repeat(5 - Math.floor(place.rating));
+                ratingEl.innerHTML = `${stars} ${place.rating}/5 ${place.user_ratings_total ? `(${place.user_ratings_total} reseñas)` : ''}`;
+            } else {
+                ratingEl.innerHTML = '';
+            }
+            
+            // Dirección
+            document.getElementById('panel-address').textContent = place.vicinity || place.formatted_address || '';
+            
+            // Teléfono
+            const phoneEl = document.getElementById('panel-phone');
+            if (place.international_phone_number) {
+                phoneEl.innerHTML = `📞 <a href="tel:${place.international_phone_number.replace(/\s/g, '')}">${place.international_phone_number}</a>`;
+            } else {
+                phoneEl.textContent = '';
+            }
+            
+            // Web
+            const webEl = document.getElementById('panel-website');
+            if (place.website) {
+                webEl.href = place.website;
+                webEl.style.display = 'inline-block';
+            } else {
+                webEl.style.display = 'none';
+            }
+            
+            // Horario
+            const hoursEl = document.getElementById('panel-hours');
+            if (place.opening_hours && place.opening_hours.weekday_text) {
+                hoursEl.innerHTML = `<strong>Horario:</strong><br>${place.opening_hours.weekday_text.slice(0, 3).join('<br>')}`;
+            } else {
+                hoursEl.textContent = '';
+            }
+            
+            // Foto
+            const photoEl = document.getElementById('panel-photo');
+            if (place.photos && place.photos[0]) {
+                photoEl.src = place.photos[0].getUrl({ maxWidth: 400, maxHeight: 300 });
+                photoEl.style.display = 'block';
+            } else if (place.photo) {
+                const img = new Image();
+                img.onload = () => {
+                    photoEl.src = place.photo;
+                    photoEl.style.display = 'block';
+                };
+                img.onerror = () => {
+                    photoEl.style.display = 'none';
+                };
+                img.src = place.photo;
+            } else {
+                photoEl.style.display = 'none';
+            }
+            
+            // Guardar lugar seleccionado para ruta
+            selectedPlace = place;
+            
+            // Mostrar panel
+            panel.classList.remove('hidden');
+        }
+
+        // Calcular ruta
+        function calculateRoute() {
+            if (!selectedPlace || !userPosition) return;
+
+            const destination = selectedPlace.geometry ? selectedPlace.geometry.location : new google.maps.LatLng(selectedPlace.location.lat, selectedPlace.location.lng);
+
+            directionsService.route({
+                origin: userPosition,
+                destination: destination,
+                travelMode: google.maps.TravelMode.DRIVING
+            }, (response, status) => {
+                if (status === google.maps.DirectionsStatus.OK) {
+                    directionsRenderer.setDirections(response);
+                    
+                    // Mostrar panel ruta
+                    const route = response.routes[0].legs[0];
+                    document.getElementById('route-summary').innerHTML = `
+                        📍 ${route.distance.text} • ⏱️ ${route.duration.text}
+                    `;
+                    
+                    // Enlace a Google Maps
+                    const originStr = `${userPosition.lat},${userPosition.lng}`;
+                    const destStr = `${destination.lat()},${destination.lng()}`;
+                    document.getElementById('open-gmaps').href = 
+                        `https://www.google.com/maps/dir/?api=1&origin=${originStr}&destination=${destStr}&travelmode=driving`;
+                    
+                    document.getElementById('route-panel').classList.remove('hidden');
+                } else {
+                    alert('No se pudo calcular la ruta: ' + status);
+                }
+            });
+        }
+
+        // Formulario marcador personalizado
+        function showMarkerForm(latLng) {
+            document.getElementById('marker-form').classList.remove('hidden');
+            window.tempMarkerPosition = latLng;
+        }
+
+        function saveCustomMarker() {
+            const latLng = window.tempMarkerPosition;
+            if (!latLng) return;
+
+            const markerData = {
+                name: document.getElementById('marker-name').value,
+                description: document.getElementById('marker-desc').value,
+                photo: document.getElementById('marker-photo').value,
+                phone: document.getElementById('marker-phone').value,
+                website: document.getElementById('marker-web').value,
+                category: document.getElementById('marker-category').value,
+                position: {
+                    lat: latLng.lat(),
+                    lng: latLng.lng()
+                },
+                type: 'custom'
+            };
+
+            // Crear marcador
+            const marker = new google.maps.Marker({
+                position: latLng,
+                map: map,
+                icon: {
+                    url: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
+                    scaledSize: new google.maps.Size(30, 30)
+                },
+                title: markerData.name,
+                 markerData  // ✅ CORREGIDO
+            });
+
+            // Hover info
+            google.maps.event.addListener(marker, 'mouseover', () => {
+                let content = `
+                    <div style="font-family: Arial; padding: 10px; min-width: 200px;">
+                        <h3 style="margin: 0 0 5px 0; color: #e87424;">📍 ${markerData.name}</h3>
+                `;
+
+                if (markerData.description) {
+                    content += `<p style="margin: 5px 0 0 0; font-size: 0.85rem;">${markerData.description}</p>`;
+                }
+
+                if (markerData.photo) {
+                    content += `<img src="${markerData.photo}" style="width: 100px; height: 100px; object-fit: cover; margin: 5px 0;">`;
+                }
+
+                content += `</div>`;
+
+                infoWindow.setContent(content);
+                infoWindow.open(map, marker);
+            });
+
+            google.maps.event.addListener(marker, 'mouseout', () => {
+                infoWindow.close();
+            });
+
+            // Clic → panel completo
+            google.maps.event.addListener(marker, 'click', () => {
+                showCustomMarkerPanel(markerData);
+            });
+
+            // Guardar en array
+            customMarkers.push(marker);
+            currentMarkers.push(marker);
+
+            // Guardar en LocalStorage
+            saveCustomMarkersToStorage();
+
+            // Cerrar formulario
+            document.getElementById('marker-form').classList.add('hidden');
+            document.getElementById('custom-marker-form').reset();
+        }
+
+        // Mostrar panel marcador personalizado
+        function showCustomMarkerPanel(data) {
+            const panel = document.getElementById('panel-info');
+            
+            document.getElementById('panel-name').textContent = data.name;
+            document.getElementById('panel-rating').innerHTML = `<span style="color: #e87424;">📍 ${data.category}</span>`;
+            document.getElementById('panel-address').textContent = `Lat: ${data.position.lat}, Lng: ${data.position.lng}`;
+            
+            const phoneEl = document.getElementById('panel-phone');
+            if (data.phone) {
+                phoneEl.innerHTML = `📞 <a href="tel:${data.phone.replace(/\s/g, '')}">${data.phone}</a>`;
+            } else {
+                phoneEl.textContent = '';
+            }
+            
+            const webEl = document.getElementById('panel-website');
+            if (data.website) {
+                webEl.href = data.website;
+                webEl.style.display = 'inline-block';
+            } else {
+                webEl.style.display = 'none';
+            }
+            
+            document.getElementById('panel-hours').textContent = data.description || '';
+            
+            const photoEl = document.getElementById('panel-photo');
+            if (data.photo) {
+                photoEl.src = data.photo;
+                photoEl.style.display = 'block';
+            } else {
+                photoEl.style.display = 'none';
+            }
+            
+            selectedPlace = {
+                geometry: {
+                    location: new google.maps.LatLng(data.position.lat, data.position.lng)
+                }
+            };
+            
+            panel.classList.remove('hidden');
+        }
+
+        // Guardar marcadores personalizados en LocalStorage
+        function saveCustomMarkersToStorage() {
+            const data = customMarkers.map(m => ({
+                name: m.data.name,
+                description: m.data.description,
+                photo: m.data.photo,
+                phone: m.data.phone,
+                website: m.data.website,
+                category: m.data.category,
+                position: {
+                    lat: m.getPosition().lat(),
+                    lng: m.getPosition().lng()
+                }
+            }));
+            
+            localStorage.setItem('scotlandCustomMarkers', JSON.stringify(data));
+        }
+
+        // Cargar marcadores personalizados
+        function loadCustomMarkers() {
+            const saved = localStorage.getItem('scotlandCustomMarkers');
+            if (!saved) return;
+
+            try {
+                const data = JSON.parse(saved);
+                data.forEach(item => {
+                    const marker = new google.maps.Marker({
+                        position: item.position,
+                        map: map,
+                        icon: {
+                            url: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
+                            scaledSize: new google.maps.Size(30, 30)
+                        },
+                        title: item.name,
+                         {  // ✅ CORREGIDO
+                            ...item,
+                            type: 'custom'
+                        }
+                    });
+
+                    // Hover info
+                    google.maps.event.addListener(marker, 'mouseover', () => {
+                        let content = `
+                            <div style="font-family: Arial; padding: 10px; min-width: 200px;">
+                                <h3 style="margin: 0 0 5px 0; color: #e87424;">📍 ${item.name}</h3>
+                        `;
+
+                        if (item.description) {
+                            content += `<p style="margin: 5px 0 0 0; font-size: 0.85rem;">${item.description}</p>`;
+                        }
+
+                        if (item.photo) {
+                            content += `<img src="${item.photo}" style="width: 100px; height: 100px; object-fit: cover; margin: 5px 0;">`;
+                        }
+
+                        content += `</div>`;
+
+                        infoWindow.setContent(content);
+                        infoWindow.open(map, marker);
+                    });
+
+                    google.maps.event.addListener(marker, 'mouseout', () => {
+                        infoWindow.close();
+                    });
+
+                    // Clic → panel
+                    google.maps.event.addListener(marker, 'click', () => {
+                        showCustomMarkerPanel(item);
+                    });
+
+                    customMarkers.push(marker);
+                    currentMarkers.push(marker);
+                });
+            } catch (e) {
+                console.error('Error loading custom markers:', e);
+            }
+        }
+    </script>
+
+    <!-- ⚠️ REEMPLAZA TU_API_KEY POR TU CLAVE REAL DE GOOGLE CLOUD ⚠️ -->
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCE0XidfuLtjrNgNenKnpqq6lq1F0CTYUs&libraries=places&callback=initMap">
+    </script>
 </body>
 </html>
